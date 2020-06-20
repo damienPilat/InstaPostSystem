@@ -14,21 +14,17 @@ browser.get('https://www.instagram.com/')
 
 sleep(2)    # Load Page
 
-# Find usr & pwd field
-username_input = browser.find_element_by_css_selector("input[name='username']")
-password_input = browser.find_element_by_css_selector("input[name='password']")
-# Send usr & pwd
-username_input.send_keys("USERNAME")
-password_input.send_keys("PASSWORD")
-# Submit
-login_button = browser.find_element_by_xpath("//button[@type='submit']")
-login_button.click()
+# Find usr & pwd field, submit keys
+browser.find_element_by_css_selector("input[name='username']").send_keys("USERNAME")
+browser.find_element_by_css_selector("input[name='password']").send_keys("PASSWORD")
+# Submit login
+login_button = browser.find_element_by_xpath("//button[@type='submit']").click()
 # Disregard Notification
-notification_button = browser.find_element_by_xpath("//button[text()='Not Now']")
-notification_button.click()
+browser.find_element_by_xpath("//button[text()='Not Now']").click()
+# Go to Profile Page
+browser.find_element_by_xpath('/html/body/div[1]/section/nav/div[2]/div/div/div[3]/div/div[5]').click()
 
-sleep(50)    # Keep page loaded
-
+sleep(10)    # Keep page loaded
 
 # Close Browser
 browser.close()
