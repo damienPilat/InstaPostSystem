@@ -1,5 +1,8 @@
+import os
 from time import sleep
 from selenium import webdriver
+from dotenv import load_dotenv
+load_dotenv()
 
 # Initialise Firefox as driver
 browser = webdriver.Firefox()
@@ -15,8 +18,8 @@ browser.get('https://www.instagram.com/')
 sleep(2)    # Load Page
 
 # Find usr & pwd field, submit keys
-browser.find_element_by_css_selector("input[name='username']").send_keys("USERNAME")
-browser.find_element_by_css_selector("input[name='password']").send_keys("PASSWORD")
+browser.find_element_by_css_selector("input[name='username']").send_keys(os.getenv("USERNAME"))
+browser.find_element_by_css_selector("input[name='password']").send_keys(os.getenv("PASSWORD"))
 # Submit login
 login_button = browser.find_element_by_xpath("//button[@type='submit']").click()
 # Disregard Notification
