@@ -1,7 +1,9 @@
+import os
 from instapy import InstaPy
 
+
 # Connect & Login
-session = InstaPy(username="archerhills", password="6bP-Hvm-019-vwi-Bc")
+session = InstaPy(username=os.getenv("USERNAME"), password=os.getenv("PASSWORD"))
 session.login()
 
 # Unfollow 400 accounts who dont follow back at random, sleep 10 min
